@@ -10,8 +10,10 @@ class Finder{
     }
 
     void arm_prime(int start, int end){
-        for (int i = start; i < end; i++) {
 
+        System.out.println("Armstrong Numbers in given range are: ");
+        for (int i = start; i <= end; i++) {
+            //Code for Armstrong no.
             int num = i;
             int cnt = 0;
             int rem, sum;
@@ -30,9 +32,35 @@ class Finder{
             }
             sum = (int) sum1;
             if (sum == i)
-                System.out.println(sum);
+                System.out.print(sum + " ");
 
         }
+        System.out.println();
+
+        int numP = 0;
+        for (int i = start; i < end; i++) {
+            //Code for Prime No.
+
+            int flag = 1;
+            if (i == 1)
+                continue;
+            for (int j = 2; j < i; j++) {
+
+
+                if (i % j == 0)
+                    flag = 0;
+            }
+
+            if (flag == 1) {
+                System.out.print(i + " ");
+                numP++;
+            }
+
+
+        }
+        System.out.println();
+        System.out.println("Total Prime Numbers in given range are: " + numP);
+        System.out.println();
     }
 }
 
