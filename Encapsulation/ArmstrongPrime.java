@@ -37,6 +37,7 @@ class Finder{
         }
         System.out.println();
 
+        System.out.println("Prime Numbers are:");
         int numP = 0;
         for (int i = start; i < end; i++) {
             //Code for Prime No.
