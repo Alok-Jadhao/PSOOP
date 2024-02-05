@@ -14,6 +14,27 @@ class User {
     void getUsername() {
         System.out.println("Your username is: " + username);
     }
+
+    boolean isValidPassword(String password) {
+        // Condition 1: It should have at least 8 and at most 32 characters
+        if (password.length() < 8 || password.length() > 32) {
+            return false;
+        }
+
+        // Condition 2: It should start with an uppercase or lowercase letter
+        char firstChar = password.charAt(0);
+        if (!(Character.isUpperCase(firstChar) || Character.isLowerCase(firstChar))) {
+            return false;
+        }
+
+        // Condition 3: It should not have spaces
+        if (password.contains(" ")) {
+            return false;
+        }
+
+        // If all conditions are satisfied, it's a valid password
+        return true;
+    }
 }
 
 class Post {
@@ -67,6 +88,8 @@ class Post {
     void comment() {
         CommentsCount++;
     }
+
+
 }
 
 public class Constructor {
@@ -83,7 +106,12 @@ public class Constructor {
 
         // Creating User object
         User u1 = new User(username, password);
+
+        //check password
+        System.out.print("Valid password: ");
+        System.out.println(u1.isValidPassword(password));
         u1.getUsername();
+
 
         System.out.println("Input for Post Class: ");
 
@@ -115,5 +143,6 @@ public class Constructor {
         int option2 = in.nextInt();
         // Displaying likes or comments based on user's choice
         p1.display(option2);
+
     }
 }
