@@ -57,11 +57,31 @@ class Post{
         System.out.println("Total Comments: "+ CommentsCount);
     }
 
+    void display(int option){
+        if(option == 1)
+            getLikes();
+        else if (option==2) {
+            getComment();
+        }
+        else
+            System.out.println("Invalid input.");
+    }
+
+    void feedback(int option){
+        if(option == 1)
+            like();
+        else if (option==2) {
+            comment();
+        }
+        else
+            System.out.println("Invalid input.");
+    }
+
     void like(){
         LikesCount++;
     }
 
-    void comment(String comment){
+    void comment(){
         CommentsCount++;
     }
 }
@@ -78,7 +98,7 @@ public class Constructor {
         System.out.print("Enter Password: ");
         password = in.nextLine();
         
-        in.nextLine();
+
         
         User u1 = new User(username, password);
         u1.getUsername();
@@ -96,18 +116,22 @@ public class Constructor {
         LikesCount = in.nextInt();
         System.out.print("Enter commentsCount: ");
         CommentsCount = in.nextInt();
-        System.out.print("Enter new comment: ");
-        String comment = in.nextLine();
+
         
         
         Post p1 = new Post(postID, LikesCount, CommentsCount);
-        p1.getLikes();
-        p1.getComment();
-        p1.like();
-        p1.comment(comment);
 
-        p1.getLikes();
-        p1.getComment();
+        System.out.println();
+        System.out.println("What do you wish to see: 1. Like 2. Comment");
+        int option = in.nextInt();
+        p1.display(option);
+        System.out.println("What do you want to do: 1. Like 2. Comment");
+        int response = in.nextInt();
+        p1.feedback(response);
+
+        System.out.println("What do you wish to see: 1. Like 2. Comment");
+        int option2 = in.nextInt();
+        p1.display(option2);
         
     }
 }
