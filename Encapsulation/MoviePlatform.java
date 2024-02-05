@@ -11,10 +11,11 @@ class User {
         this.accountBalance = accountBalance;
     }
 
+    // Check if the user can watch the movie.
     public boolean canWatchMovie(Movie movie) {
         return age >= movie.getAgeRestriction() && accountBalance >= movie.getCost();
     }
-
+    // Print movie watch status.
     public void watchMovie(Movie movie) {
         if (canWatchMovie(movie)) {
             System.out.println(name + " is watching " + movie.getTitle());
@@ -30,7 +31,7 @@ class Movie {
     String title;
     int ageRestriction;
     double cost;
-
+    // Movie constructor.
     public Movie(String title, int ageRestriction, double cost) {
         this.title = title;
         this.ageRestriction = ageRestriction;
