@@ -144,5 +144,7 @@ public class Constructor {
         // Displaying likes or comments based on user's choice
         p1.display(option2);
 
+
+
     }
 }
