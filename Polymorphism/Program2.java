@@ -45,7 +45,7 @@ class Date {
 		this.min = min;
 		this.sec = sec;
 	}
-	
+
 	void setDate(int year, int month, int date){
 		this.year = year;
 		this.month = month;
