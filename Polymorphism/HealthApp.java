@@ -32,6 +32,22 @@ You can find estimates of the caloric content of many foods on the web.
 For example, a double cheeseburger has approximately 1000 calories.
 */
 
+/*
+ * Flow:
+ * Input: All inputs.
+ * Calorie count:2 function:
+ * 1) Basal
+ * 2) Physical
+ * 3) Digestion
+ *
+ * Physical would require the given formula and below variables:
+ * Intensity.
+ * Activity and speed.
+ *
+ * Ask calories from user and
+ * and return no of servings he can take.
+ *
+ */
 
 
 import java.util.Scanner;
@@ -147,16 +163,3 @@ public class HealthApp{
 
 }
 
-/*
- * Flow:
- * Input: All inputs.
- * Calorie count:2 function:
- * 1) Basal
- * 2) Physical
- * 
- * Physical would require many functions.
- * Intensity.
- * Activity and speed.
- * 
- * function to calculate calorie for different intensity, speed, activity.
- */

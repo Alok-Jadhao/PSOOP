@@ -29,7 +29,7 @@ class Date {
     int sec;
 
     // Default constructor
-    public Date() {
+    public Date {
         this.year = 2000;
         this.month = 1;
         this.date = 1;
@@ -38,7 +38,7 @@ class Date {
         this.sec = 0;
     }
 
-<<<<<<< HEAD:Polymorphism/Program2.java
+
 	void setDate(int year, int month, int date){
 		this.year = year;
 		this.month = month;
@@ -62,13 +62,13 @@ class Date {
 		this.min = min;
 		this.sec = sec;
 	}
-=======
+
     void setDate(int year, int month, int date) {
         this.year = year;
         this.month = month;
         this.date = date;
     }
->>>>>>> d69b9a1aaf8717dc68d0dddd7418479f704bafbd:Overloading/Program2.java
+
 
     void setDate(int year, int month, int date, int hrs, int min) {
         this.year = year;
@@ -99,20 +99,17 @@ class Date {
 
     static void compareDates(int day1,int month1,int year1,int day2,int  month2,int year2,String name1,String name2) {
         long sum1=0;
-            sum1+= year1*365 + month1*30 +day1;
+        sum1+= year1*365 + month1*30 +day1;
 
-            long sum2=0;
-            sum2+= year2*365 + month2*30 +day2;
+        long sum2=0;
+        sum2+= year2*365 + month2*30 +day2;
 
-            if (sum1 <sum2)
-            {
-                System.out.println(name2 +" is younger");
-
-            }
-            else
-            {
-                System.out.println(name1 +" is younger");
-            }
+        if (sum1 <sum2){
+            System.out.println(name2 +" is younger");
+        }
+        else {
+            System.out.println(name1 +" is younger");
+        }
     }
 }
 
