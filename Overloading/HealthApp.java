@@ -34,6 +34,8 @@ For example, a double cheeseburger has approximately 1000 calories.
 
 // i kg = 2.2062
 
+import java.util.Scanner;
+
 class Calorie{
     String name;
     int body_weight, intensity, min_exercise, favorite_cal; 
@@ -65,12 +67,30 @@ public class HealthApp{
         String name;
         int body_weight, intensity, min_exercise, favorite_cal; 
         double total;
+        Scanner in = new Scanner(System.in);
 
         System.out.println("Hello, Welcome to our Health-App");
 
         Calorie cal = new Calorie();
 
         System.out.print("Enter your name: ");
+        name = in.nextLine();
+        System.out.print("Enter your Body Weight (in pounds): ");
+        body_weight = in.nextInt();
+        System.out.print("Enter the calories for your favourite food: ");
+        favorite_cal = in.nextInt();
+        System.out.print("Enter your duration of exercise: ");
+        min_exercise = in.nextInt();
+
+        System.out.println("For your reference: ");
+        System.out.println("_A_c_t_iv_i_t_y____________________In_t_e_n_s_i_ty_\n" + //
+                        "Running 10 mph: \t\t\t\t\t17\n" + //
+                        "Running 6 mph: \t\t\t\t\t10\n" + //
+                        "Basketball: \t\t\t\t\t\t8\n" + //
+                        "Walking 1 mph: \t\t\t\t\t1");
+        System.out.println("Now, enter your intensity (in numbers): ");
+        intensity = in.nextInt();
+        
     }
 }
 
