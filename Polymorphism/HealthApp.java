@@ -32,22 +32,6 @@ You can find estimates of the caloric content of many foods on the web.
 For example, a double cheeseburger has approximately 1000 calories.
 */
 
-/*
- * Flow:
- * Input: All inputs.
- * Calorie count:2 function:
- * 1) Basal
- * 2) Physical
- * 3) Digestion
- *
- * Physical would require the given formula and below variables:
- * Intensity.
- * Activity and speed.
- *
- * Ask calories from user and
- * and return no of servings he can take.
- *
- */
 
 
 import java.util.Scanner;
@@ -81,8 +65,10 @@ class Calorie{
         return totalCalRequired() * 0.1;
     }
 
-    int serving(){
-        return (int)((totalCalRequired())/favorite_cal);
+    double serving(){
+        double serve = totalCalRequired()/favorite_cal;
+        return Math.floor(serve);
+
     }
 
 }
@@ -127,7 +113,7 @@ public class HealthApp{
         Calorie cal = new Calorie(name, body_weight, intensity, min_exercise, favorite_cal);
         total = cal.totalCalRequired();
         
-	System.out.println("Select your choice for the type of calorie: 1. Basal Calories  2. Calories burned due to Physical Activity  3. Calories Required for Digestion.");
+	System.out.println("Select your choice for the type of calorie: \n1. Basal Calories  2. Calories burned due to Physical Activity  3. Calories Required for Digestion.");
 
     int choice = in.nextInt();
     switch (choice) {
@@ -149,12 +135,8 @@ public class HealthApp{
             System.out.println("Invalid choice.");
             break;   
     }
-
     
-
-    
-
-    int serving = cal.serving();
+    double serving = cal.serving();
     System.out.println("You can eat " + serving + " servings of your favourite food.");
 
     System.out.println();
@@ -163,3 +145,16 @@ public class HealthApp{
 
 }
 
+/*
+ * Flow:
+ * Input: All inputs.
+ * Calorie count:2 function:
+ * 1) Basal
+ * 2) Physical
+ * 
+ * Physical would require many functions.
+ * Intensity.
+ * Activity and speed.
+ * 
+ * function to calculate calorie for different intensity, speed, activity.
+ */

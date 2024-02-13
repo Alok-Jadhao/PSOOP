@@ -32,20 +32,27 @@ class Test{
         logBase = 2;
         argument = 2;
     }
-
-    double calculate (double base, int power){
-        return Math.pow(base, power);
+	
+	//Method to calculate power.
+    void calculate (double base, int power){
+        System.out.println("Answer: " + Math.pow(base, power));
     }
-
-    double calculate (int logBase, int argument){
-        return Math.log10(argument)/Math.log10(logBase);
+	
+	//Method to calculate log.
+    void calculate (int logBase, int argument){
+        System.out.println("Answer: " + Math.log10(argument)/Math.log10(logBase));
     }
 }
 
 public class Main {
     public static void main(String[] args) {
         Test test = new Test();
-        double ans = test.calculate(2, 4);
-        System.out.println(ans);
+        
+        //Log calculation
+        test.calculate(2,8);
+
+        //Power calculation
+        test.calculate(1.5, 4);
+        
     }
 }
