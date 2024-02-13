@@ -33,7 +33,22 @@ For example, a double cheeseburger has approximately 1000 calories.
 */
 
 
+/*
+ * Flow:
+ * Input: All inputs.
+ * Calorie count:2 function:
+ * 1) Basal
+ * 2) Physical
+ * 
+ * Physical would require many functions.
+ * Intensity.
+ * Activity and speed.
+ * 
+ * function to calculate calorie for different intensity, speed, activity.
+ */
 
+
+ 
 import java.util.Scanner;
 
 class Calorie{
@@ -145,16 +160,4 @@ public class HealthApp{
 
 }
 
-/*
- * Flow:
- * Input: All inputs.
- * Calorie count:2 function:
- * 1) Basal
- * 2) Physical
- * 
- * Physical would require many functions.
- * Intensity.
- * Activity and speed.
- * 
- * function to calculate calorie for different intensity, speed, activity.
- */
+
