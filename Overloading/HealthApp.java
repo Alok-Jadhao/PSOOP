@@ -91,6 +91,9 @@ public class HealthApp{
         System.out.println("Now, enter your intensity (in numbers): ");
         intensity = in.nextInt();
         
+	System.out.println("Select your choice for the type of calorie: 1. Basal Calorie  2. Calorie Physical ac");
+	
+        
     }
 }
 
