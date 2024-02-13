@@ -15,7 +15,7 @@ alphabetical order.
 The input will have four lines. The first two lines correspond to the first person, while the
 last two lines correspond to the second person. For each person, the first line
 corresponds to the name and the second line corresponds to the date of birth in DD-
-MM-YYYY format. Your output should be the name of the younger of 
+MM-YYYY format. Your output should be the name of the younger of person
 */
 
 import java.util.Scanner;
@@ -35,15 +35,6 @@ class Date {
 		this.hrs = 00;
 		this.min = 00;
 		this.sec = 00;
-	}
-
-	public Date(int year, int month, int date, int hrs, int min, int sec) {
-		this.year = year;
-		this.month = month;
-		this.date = date;
-		this.hrs = hrs;
-		this.min = min;
-		this.sec = sec;
 	}
 
 	void setDate(int year, int month, int date){
