@@ -21,116 +21,104 @@ MM-YYYY format. Your output should be the name of the younger of
 import java.util.Scanner;
 
 class Date {
-	int year;
-	int month;
-	int date;
-	int hrs;
-	int min;
-	int sec;
+    int year;
+    int month;
+    int date;
+    int hrs;
+    int min;
+    int sec;
 
-	public Date() {
-		this.year = 2000;
-		this.month = 1;
-		this.date = 1;
-		this.hrs = 00;
-		this.min = 00;
-		this.sec = 00;
-	}
+    // Default constructor
+    public Date() {
+        this.year = 2000;
+        this.month = 1;
+        this.date = 1;
+        this.hrs = 0;
+        this.min = 0;
+        this.sec = 0;
+    }
 
-	public Date(int year, int month, int date, int hrs, int min, int sec) {
-		this.year = year;
-		this.month = month;
-		this.date = date;
-		this.hrs = hrs;
-		this.min = min;
-		this.sec = sec;
-	}
-	
-	void setDate(int year, int month, int date){
-		this.year = year;
-		this.month = month;
-		this.date = date;
-	}
-	
-	void setDate(int year, int month, int date, int hrs, int min){
-		this.year = year;
-		this.month = month;
-		this.date = date;
-		this.hrs = hrs;
-		this.min = min;
-		
-	}
-	
-	void setDate(int year, int month, int date, int hrs, int min, int sec){
-		this.year = year;
-		this.month = month;
-		this.date = date;
-		this.hrs = hrs;
-		this.min = min;
-		this.sec = sec;
-	}
+    void setDate(int year, int month, int date) {
+        this.year = year;
+        this.month = month;
+        this.date = date;
+    }
 
-	void displayDate(){
-		System.out.println("Date is: "+ date + ':' + month + ':' + year);
-	}
+    void setDate(int year, int month, int date, int hrs, int min) {
+        this.year = year;
+        this.month = month;
+        this.date = date;
+        this.hrs = hrs;
+        this.min = min;
+    }
 
-	void retirement(){
-		System.out.println("Your retirement date is: " + date + ':' + month + ':' + (year+60));
-	}
+    void setDate(int year, int month, int date, int hrs, int min, int sec) {
+        this.year = year;
+        this.month = month;
+        this.date = date;
+        this.hrs = hrs;
+        this.min = min;
+        this.sec = sec;
+    }
+
+    // Display date method
+    void displayDate() {
+        System.out.println("Date: " + date + "/" + month + "/" + year + " " + hrs + ":" + min + ":" + sec);
+    }
+
+    // Calculate retirement date at age of 60
+    void retirement() {
+        System.out.println("Retirement date: " + date + "/" + month + "/" + (year + 60) + " " + hrs + ":" + min + ":" + sec);
+    }
+
+    static void compareDates(int day1,int month1,int year1,int day2,int  month2,int year2,String name1,String name2) {
+        long sum1=0;
+            sum1+= year1*365 + month1*30 +day1;
+
+            long sum2=0;
+            sum2+= year2*365 + month2*30 +day2;
+
+            if (sum1 <sum2)
+            {
+                System.out.println(name2 +" is younger");
+
+            }
+            else
+            {
+                System.out.println(name1 +" is younger");
+            }
+    }
 }
 
 public class Program2 {
-	public static void main(String[] args) {
-	    Scanner in = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-		System.out.println("How would you like to input date: ");
-		System.out.println("1. 1/1/2000  2. 1/1/2000 00:00  3. 1/1/2000 00:00:00");
+        // Person 1 details
+        System.out.println("Enter name of Person 1:");
+        String name1 = scanner.nextLine();
+        System.out.println("Enter date of birth of Person 1 in DD-MM-YYYY format:");
+        int day1 = scanner.nextInt();
+        int month1 = scanner.nextInt();
+        int year1 = scanner.nextInt();
+        Date date1 = new Date();
+        date1.setDate(year1, month1, day1);
 
-		int choice = in.nextInt();
+        // Person 2 details
+        System.out.println("Enter name of Person 2:");
+        scanner.nextLine(); // Consume newline character left by previous scanner.nextInt()
+        String name2 = scanner.nextLine();
+        System.out.println("Enter date of birth of Person 2 in DD-MM-YYYY format:");
+        int day2 = scanner.nextInt();
+        int month2 = scanner.nextInt();
+        int year2 = scanner.nextInt();
+        Date date2 = new Date();
+        date2.setDate(year2, month2, day2);
 
-		int year;
-		int month;
-		int date;
-		int hrs;
-		int min;
-		int sec;
+        // Compare dates of birth
+        Date.compareDates(day1, month1,year1,day2, month2,year2, name1, name2);
 
-		System.out.println("Enter date: ");
-		date = in.nextInt();
-		System.out.println("Enter month: ");
-		month = in.nextInt();
-		System.out.println("Enter year: ");
-		year = in.nextInt();
-
-		switch (choice) {
-			case 1:
-				//Input already taken, as it was common input for all cases.
-				break;
-			
-			// 00:00
-			case 2:
-				System.out.print("Enter hour: ");
-				hrs = in.nextInt();
-				System.out.print("Enter min: ");
-				min = in.nextInt();
-				break;
-
-			// 00:00:00
-			case 3:
-
-				System.out.print("Enter hour: ");
-				hrs = in.nextInt();
-				System.out.print("Enter min: ");
-				min = in.nextInt();
-				System.out.print("Enter seconds: ");
-				sec = in.nextInt();
-				break;
-
-
-			default:
-				break;
-		}
-	
-
-	}
+    }
 }
+
+
