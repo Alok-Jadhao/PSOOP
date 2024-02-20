@@ -1,5 +1,4 @@
 import java.util.*;
-
 class Details{
 	String name;
 	int rollno;
@@ -64,3 +63,4 @@ public class Marksheet{
 		
 	}
 }
+//This is comment inserted in terminal.
