@@ -38,31 +38,6 @@ class Date {
         this.sec = 0;
     }
 
-
-	void setDate(int year, int month, int date){
-		this.year = year;
-		this.month = month;
-		this.date = date;
-	}
-	
-	void setDate(int year, int month, int date, int hrs, int min){
-		this.year = year;
-		this.month = month;
-		this.date = date;
-		this.hrs = hrs;
-		this.min = min;
-		
-	}
-	
-	void setDate(int year, int month, int date, int hrs, int min, int sec){
-		this.year = year;
-		this.month = month;
-		this.date = date;
-		this.hrs = hrs;
-		this.min = min;
-		this.sec = sec;
-	}
-
     void setDate(int year, int month, int date) {
         this.year = year;
         this.month = month;
