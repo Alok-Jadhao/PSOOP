@@ -12,123 +12,114 @@
  */
 
 
-/*
-// Method to add two points
-public static Point add(Point q, Point r) {
-    return new Point(q.x + r.x, q.y + r.y);
-}
-// Method to add a point to this point
-public void add(Point q) {
-    this.x += q.x;
-    this.y += q.y;
-}
-*/
-
 class Point {
-    int x,y;
+    int x, y;
 
-    public Point(int x,int y) {
-	this.x = x;
-	this.y = y;
+    // Constructor to initialize x and y coordinates
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    //Add Two points q,r
-    Point add(Point q, Point r){
+    // Method to add two points and return a new point
+    Point add(Point q, Point r) {
         return new Point(q.x + r.x, q.y + r.y);
     }
 
-    //add q to the current point
-    void add(Point q){
+    // Method to add a point to the current point
+    void add(Point q) {
         this.x += q.x;
         this.y += q.y;
     }
 
-    //Subtract two point, return new
-    Point subtract(Point q, Point r){
+    // Method to subtract one point from another and return a new point
+    Point subtract(Point q, Point r) {
         return new Point(q.x - r.x, q.y - r.y);
     }
 
-    //Sub q from current pt.
-    void subtract(Point q){
+    // Method to subtract a point from the current point
+    void subtract(Point q) {
         this.x -= q.x;
         this.y -= q.y;
     }
 
-    //multiply
-    Point multiply(Point q, int n){
+    // Method to multiply a point by a scalar value and return a new point
+    Point multiply(Point q, int n) {
         return new Point(q.x * n, q.y * n);
     }
 
-    void multiply(int n){
+    // Method to multiply the current point by a scalar value
+    void multiply(int n) {
         this.x *= n;
         this.y *= n;
     }
 
-    Point divide(Point q, int n){
+    // Method to divide a point by a scalar value and return a new point
+    Point divide(Point q, int n) {
         return new Point(q.x / n, q.y / n);
     }
 
-    void divide(int n){
-        this.x /= n;
-        this.y /= n;
+    // Method to divide the current point by a scalar value and return double outputs
+    void divide(int n) {
+        System.out.println("X coordinate of point p: " + (double)this.x/n);
+        System.out.println("Y coordinate of point p: " + (double)this.y/n + "\n");
     }
 }
 
-public class Arithmetic { 
+public class ArithmeticTest {
     public static void main(String[] args) {
-        Point q = new Point(20,20);
-        Point r = new Point(5,5);
-        int n = 10; 
+        // Create points and scalar value for operations
+        Point q = new Point(20, 20);
+        Point r = new Point(5, 5);
+        int n = 10;
 
-        System.out.println("q = 20,20  ;  r = 5,5  ;  n = 10\n");
+        System.out.println("q = 20, 20  ;  r = 5, 5  ;  n = 10\n");
 
-        //Operation 1 - add
-        Point p = q.add(q,r);
-        System.out.println("Addition of two Points q,r");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
+        // Operation 1 - add two points
+        Point p = q.add(q, r);
+        System.out.println("Addition of two points q and r:");
+        System.out.println("X coordinate of point p: " + p.x);
+        System.out.println("Y coordinate of point p: " + p.y + "\n");
 
-        //Operation 2 - add
+        // Operation 2 - add a point to the current point
         p.add(q);
-        System.out.println("Addition of q in p");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
-        
-        //Operation 3 - subtract
-        p = p.subtract(q,r);
-        System.out.println("Subtraction of two Points q,r");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
-        
-        //Operation 4 - subtract.
+        System.out.println("Addition of point q to the current point p:");
+        System.out.println("X coordinate of point p: " + p.x);
+        System.out.println("Y coordinate of point p: " + p.y + "\n");
+
+        // Operation 3 - subtract one point from another
+        p = p.subtract(q, r);
+        System.out.println("Subtraction of point r from point q:");
+        System.out.println("X coordinate of point p: " + p.x);
+        System.out.println("Y coordinate of point p: " + p.y + "\n");
+
+        // Operation 4 - subtract a point from the current point
         p.subtract(q);
-        System.out.println("Subtraction of q from p");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
+        System.out.println("Subtraction of point q from the current point p:");
+        System.out.println("X coordinate of point p: " + p.x);
+        System.out.println("Y coordinate of point p: " + p.y + "\n");
 
-        //Operation 5 - Multiply
-        p = p.multiply(q,n);
-        System.out.println("Multiplication of q with n = 10");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
-        
-        //Operation 6  - Multiply
+        // Operation 5 - multiply a point by a scalar value
+        p = p.multiply(q, n);
+        System.out.println("Multiplication of point q by scalar value n = 10:");
+        System.out.println("X coordinate of point p: " + p.x);
+        System.out.println("Y coordinate of point p: " + p.y + "\n");
+
+        // Operation 6 - multiply the current point by a scalar value
         p.multiply(n);
-        System.out.println("Multiplication of p with n = 10");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
+        System.out.println("Multiplication of the current point p by scalar value n = 10:");
+        System.out.println("X coordinate of point p: " + p.x);
+        System.out.println("Y coordinate of point p: " + p.y + "\n");
 
-        //Operation 7 - divide
-        p = p.divide(q,n);
-        System.out.println("Division of q by n");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
+        // Operation 7 - divide a point by a scalar value
+        p = p.divide(q, n);
+        System.out.println("Division of point q by scalar value n:");
+        System.out.println("X coordinate of point p: " + p.x);
+        System.out.println("Y coordinate of point p: " + p.y + "\n");
 
-        //Operation 8 - divide
+        // Operation 8 - divide the current point by a scalar value
+        System.out.println("Division of the current point p by scalar value n:");
         p.divide(n);
-        System.out.println("Division of q by n");
-        System.out.println("X coordinate of point P: " + p.x);
-        System.out.println("Y coordinate of point P: " + p.y + "\n");
 
         System.out.println("End of program.");
     }
