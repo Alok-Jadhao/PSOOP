@@ -1,0 +1,107 @@
+/*
+ * Write a program in Java to maintain the information of Movies which includes the information of name
+of movie , type of movie( action , thriller , comedy ,drama ) , Hero name , Heroine , budget in Rs. Write
+a program to accept the information of movies from user and sort them according to the budget of the
+film.
+ */
+
+import java.util.Scanner;
+
+class Information{
+	String name;
+	String movietype;
+	String hero,heroine;
+	int budget;
+
+	public Information(String name, String movietype, String hero, String heroine, int budget) {
+		this.name = name;
+		this.movietype = movietype;
+		this.hero = hero;
+		this.heroine = heroine;
+		this.budget = budget;
+	}
+
+	public void display(){
+		System.out.println("The name of the movie is: " + name);
+		System.out.println("The movie type is: " + movietype);
+		System.out.println("The name of the hero is: " + hero);
+		System.out.println("The name of the heroine is: " + heroine);
+		System.out.println("The budget of the movie is: " + budget);
+		
+	}
+	
+}
+
+public class MovieSort{
+	public static void main(String[] args){
+		Scanner in = new Scanner(System.in);
+		String name;
+		String movietype;
+		String hero,heroine;
+		int budget;
+		
+		
+		
+		
+		System.out.print("Please enter the movie name: ");
+		name = in.nextLine();	
+		System.out.print("Please enter the movie type: ");
+		movietype = in.nextLine();
+		System.out.print("Please enter the hero name: ");
+		hero = in.nextLine();
+		System.out.print("Please enter the heroine name: ");
+		heroine = in.nextLine();
+		System.out.print("Please enter the movie budget in cr: ");
+		budget = in.nextInt();
+		
+		Information[] movies= new Information[4];
+		movies[0] = new Information(name, movietype, hero, heroine, budget);
+//		movies[0].name = name;
+//		movies[0].movietype = movietype;
+//		movies[0].hero = hero;
+//		movies[0].heroine = heroine;
+//		movies[0].budget = budget;
+
+
+		for (int i = 0; i < n; i++) {
+		
+			System.out.println("Enter the details for movie " + i+1);
+			System.out.print("Please enter the movie name: ");
+			name = in.nextLine();	
+			System.out.print("Please enter the movie type: ");
+			movietype = in.nextLine();
+			System.out.print("Please enter the hero name: ");
+			hero = in.nextLine();
+			System.out.print("Please enter the heroine name: ");
+			heroine = in.nextLine();
+			System.out.print("Please enter the movie budget in cr: ");
+			budget = in.nextInt();
+			
+			in.nextLine();
+		 	System.out.println();
+			
+			movies[i] = new Information(name, movietype, hero, heroine, budget);
+		}
+		
+		 
+
+		
+		// Information movie2 = new Information();
+		// movie2.name = name;
+		// movie2.movietype = movietype;
+		// movie2.hero = hero;
+		// movie2.heroine = heroine;
+		// movie2.budget = budget;
+		
+		
+		
+		// if(movie1.budget>movie2.budget){
+		// 	movie1.display();
+		// }
+		// else if(movie1.budget<movie2.budget){
+		// 	movie2.display();
+		// }
+		// else
+		// 	System.out.println("Both the movies are of equal budget");
+	}
+}
