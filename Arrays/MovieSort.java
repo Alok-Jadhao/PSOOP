@@ -59,7 +59,7 @@ public class MovieSort{
 		
 			System.out.println("Enter the details for movie " + (i+1));
 			System.out.print("Please enter the movie name: ");
-			scanner.next();
+			scanner.nextLine();
 			name = scanner.nextLine();	
 			System.out.print("Please enter the movie type: ");
 			movietype = scanner.nextLine();
@@ -70,7 +70,7 @@ public class MovieSort{
 			System.out.print("Please enter the movie budget in cr: ");
 			budget = scanner.nextInt();
 			
-			scanner.nextLine();
+			
 		 	System.out.println();
 			
 			movies[i] = new Information(name, movietype, hero, heroine, budget);
