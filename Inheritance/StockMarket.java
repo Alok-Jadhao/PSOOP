@@ -1,5 +1,7 @@
-package Inheritance;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -24,10 +26,12 @@ class Stock {
     String name;
     int[] prices;
 
-    public Stock(String name) {
+    public Stock(String name, int[] prices) {
         this.name = name;
+        this.prices = prices;
     }
-
+	
+	/*
     public void input() {
         Scanner in = new Scanner(System.in);
         System.out.print("Enter number of days: ");
@@ -38,49 +42,102 @@ class Stock {
             prices[i] = in.nextInt();
         }
     }
+    */
 }
 
 class Transaction extends Stock {
-    public Transaction(String name) {
-        super(name);
+    public Transaction(String name, int[] prices) {
+        super(name, prices);
     }
 
-    // Incomplete because it gives the only maximum profit.
-    // It should give the maximum profit for every buy and sell.
-    // Like test case.
+	/*
+	Logic for findMaxProfit.
+	Use a for loop to iterate through every loop
+	i and j variables.
 
-    // Wrong function.
-    // Left for you to think...
-    public void findMaximumProfit() {
+	I can think of:
+	check till next prices is less than the current price and then sell it.
+	Use isComplete flag to check if the transcation is complete.
+	*/
+	
+	/*
+	public void findMaximumProfit() {
+		int j = 0;
+		int profit;
+		
+		for(int i = 0; i < prices.length()-1; i++) {
+			boolean isComplete = false;
+			if(prices[i] < prices[i+1] {
+				
+			}
+			
+		}
+	*/
+		
+		
+	/*
+	public void findMaximumProfit() {
         int maxProfit = 0;
         int buyDay = 0;
         int sellDay = 0;
         int buyPrice = 0;
         int sellPrice = 0;
         int profit = 0;
-        for (int i = 0; i < prices.length; i++) {
+        int TotalP = 0;
+        for (int i = buyDay; i < prices.length; i++) {
             for (int j = i + 1; j < prices.length; j++) {
                 buyPrice = prices[i];
                 sellPrice = prices[j];
                 profit = sellPrice - buyPrice;
                 if (profit > maxProfit) {
                     maxProfit = profit;
+                    TotalP += maxProfit;
                     buyDay = i;
                     sellDay = j;
+                    System.out.println("Buy on day " + (i + 1) + " and sell on day " + (sellDay + 1));
                 }
             }
         }
-        System.out.println("Buy on day " + (buyDay + 1) + " and sell on day " + (sellDay + 1));
-        System.out.println("Buy price: " + buyPrice + " Sell price: " + sellPrice);
-        System.out.println("Maximum profit: " + maxProfit);
+        
+        
+        System.out.println("Maximum profit: " + TotalP);
     }
+    */
+
+    public void findMaximumProfit() {
+        int maxProfit = 0;
+        List<Integer> buyDays = new ArrayList<>();
+        List<Integer> sellDays = new ArrayList<>();
+        int buyDay = 0;
+        int sellDay = 0;
+
+        for (int i = 0; i < prices.length - 1; i++) {
+            if (prices[i + 1] > prices[i]) {
+                buyDays.add(i);
+                buyDay = i;
+                while (i < prices.length - 1 && prices[i + 1] >= prices[i]) {
+                    i++;
+                }
+                sellDays.add(i);
+                sellDay = i;
+                maxProfit += prices[sellDay] - prices[buyDay];
+            }
+        }
+
+        System.out.println("Total profit earned is " + maxProfit);
+        for (int i = 0; i < buyDays.size(); i++) {
+            System.out.println("Buy on day " + (buyDays.get(i) + 1) + " and sell on day " + (sellDays.get(i) + 1));
+        }
+    }
+    
 }
 
 public class StockMarket {
     public static void main(String[] args) {
-        Stock stock = new Stock("Apple");
-        stock.input();
-        Transaction transaction = new Transaction("Apple");
+    	int[] prices = {1, 5, 2, 3, 7, 6, 4, 5};
+        Stock stock = new Stock("Apple", prices);
+        //stock.input();
+        Transaction transaction = new Transaction("Apple", prices);
         transaction.findMaximumProfit();
     }
 }
