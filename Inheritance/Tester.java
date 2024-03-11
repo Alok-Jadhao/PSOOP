@@ -1,113 +1,137 @@
 /*
-program 4 : tor, String writer. Production class has 3 argument constructor that sets
-the values. It also has getter and setter methods and Overridden toString()
-of object class to display details of class.
-Class Play is a sub class of Production with getter and setter
-methods and has an attribute int performances that is incremented every
-time a play happens. Add Overridden toString() of object class to display
-details of the class.
-Class Musical is a Play with songs. Musical object has all attributes
-of Play as well as String composer and String lyricist along with getter and
-setter methods. Override toString display all attributes of Musical object
-In main create 3 objects of Play and 2 objects of Musical. Every
-time an object of Play or Musical is created, performances get
-incremented. Also add the number of seats booked for each play or musical.
-Find the total box office collection, provided cost of 1 seat for Play
-is Rs 500(can be variable) and cost of 1 seat for Musical is Rs 800(can be
-variable).
-Display total No. of performances as 5 and display the box office
-collection.
-Create class Tester with main method.
+Define parent class "Employee" that has 3 private attributes String
+name, String id, int age.
+Employee has constructor with 3 arguments that set value of name, id,
+age. It also has getter
+and setter methods for all 3 private attributes.
+Class "SalariedEmployee" is a subclass of Employee and has 1 private
+attribute empSalary.
+"SalariedEmployee" can be permanent or on contract and has
+constructor
+SalariedEmployee(String name, String id, int age, double empSalary)
+to set the values.
+Constructor SalariedEmployee must call the superclass constructor to
+set name, id, age and call
+setter method to set the salary. Employee salary is empSalary +
+2000(allowance) if he is a
+permanent employee else Employee salary is empSalary (no allowance).
+Accept the details of atleast 5 employees from the user and print details of the employee on the output screen. Then print the details of the employee with highest salary.
 */
-
 package Inheritance;
 
-class Production {
-    String name;
-    int noOfSeats;
-    double cost;
-    int performances;
+import java.util.Scanner;
 
-    Production(String name, int noOfSeats, double cost) {
+class Employee {
+    private String name;
+    private String id;
+    private int age;
+
+    public Employee(String name, String id, int age) {
         this.name = name;
-        this.noOfSeats = noOfSeats;
-        this.cost = cost;
-        this.performances = 0;
+        this.id = id;
+        this.age = age;
     }
 
-    String getname() {
+    public String getName() {
         return name;
     }
 
-    int getnoOfSeats() {
-        return noOfSeats;
+    public String getId() {
+        return id;
     }
 
-    double getcost() {
-        return cost;
+    public int getAge() {
+        return age;
     }
 
-    int getperformances() {
-        return performances;
-    }
-
-    void setname(String name) {
+    public void setName(String name) {
         this.name = name;
     }
-}
 
-class Play extends Production {
-    int performances;
-
-    Play(String name, int noOfSeats, double cost) {
-        super(name, noOfSeats, cost);
-        this.performances = 0;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    void perform() {
-        performances++;
-    }
-
-    void print() {
-        System.out.println("Name: " + getname());
-        System.out.println("No. of Seats: " + getnoOfSeats());
-        System.out.println("Cost: " + getcost());
-        System.out.println("Performances: " + getperformances());
+    public void setAge(int age) {
+        this.age = age;
     }
 }
 
-class Musical extends Play {
-    String composer;
-    String lyricist;
+class SalariedEmployee extends Employee {
+    private double empSalary;
+    private boolean isPermanent;
 
-    Musical(String name, int noOfSeats, double cost, String composer, String lyricist) {
-        super(name, noOfSeats, cost);
-        this.composer = composer;
-        this.lyricist = lyricist;
+    public SalariedEmployee(String name, String id, int age, double empSalary, boolean isPermanent) {
+        super(name, id, age);
+        setEmpSalary(empSalary);
+        this.isPermanent = isPermanent;
     }
 
-    void print() {
-        System.out.println("Name: " + getname());
-        System.out.println("No. of Seats: " + getnoOfSeats());
-        System.out.println("Cost: " + getcost());
-        System.out.println("Composer: " + composer);
-        System.out.println("Lyricist: " + lyricist);
-        System.out.println("Performances: " + getperformances());
+    public double getEmpSalary() {
+        return empSalary;
     }
+    //Not Permanent = Contract basis.
+    public void setEmpSalary(double empSalary) {
+        if (isPermanent) {
+            this.empSalary = empSalary + 2000;
+        } else
+            this.empSalary = empSalary;
+    }
+
+    void printDetails() {
+        System.out.println("Name: " + getName());
+        System.out.println("ID: " + getId());
+        System.out.println("Age: " + getAge());
+        System.out.println("Salary: " + getEmpSalary());
+    }
+
 }
 
 public class Tester {
     public static void main(String[] args) {
-        Play play1 = new Play("Hamlet", 50, 500);
-        Play play2 = new Play("Macbeth", 50, 500);
-        Musical musical1 = new Musical("Hamlet", 50, 800, "William Shakespeare", "John Lennon");
-        Musical musical2 = new Musical("Macbeth", 50, 800, "William Shakespeare", "John Lennon");
+        Scanner in = new Scanner(System.in);
+        String name;
+        String id;
+        int age;
+        double empSalary;
 
-        play1.perform();
-        play2.perform();
-        musical1.perform();
-        musical2.perform();
-        musical1.perform();
-        musical2.perform();
+        System.out.print("Enter number of emplyees: ");
+        int n = in.nextInt();
+        SalariedEmployee employees[] = new SalariedEmployee[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter name: ");
+            name = in.next();
+            System.out.println("Enter id: ");
+            id = in.next();
+            System.out.println("Enter age: ");
+            age = in.nextInt();
+            System.out.println("Enter salary: ");
+            empSalary = in.nextDouble();
+            System.out.println("Is Permanent: (true/false)");
+            boolean isPermanent = in.nextBoolean();
+            employees[i] = new SalariedEmployee(name, id, age, empSalary, isPermanent);
+        }
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Employee " + (i + 1) + ':');
+            employees[i].printDetails();
+        }
+
+        int index = maxSalarayIndex(employees);
+        System.out.println("Employee with highest salary: ");
+        employees[index].printDetails();
+
+        in.close();
+    }
+
+    private static int maxSalarayIndex(SalariedEmployee[] employees) {
+        int maxIndex = 0;
+        for (int i = 1; i < employees.length; i++) {
+            if (employees[i].getEmpSalary() > employees[maxIndex].getEmpSalary()) {
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
     }
 }

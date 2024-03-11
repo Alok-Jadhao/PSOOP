@@ -76,7 +76,7 @@ class Transaction extends Stock {
     }
 }
 
-public class Main {
+public class StockMarket {
     public static void main(String[] args) {
         Stock stock = new Stock("Apple");
         stock.input();
