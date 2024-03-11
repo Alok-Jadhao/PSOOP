@@ -17,7 +17,7 @@ setter method to set the salary. Employee salary is empSalary +
 permanent employee else Employee salary is empSalary (no allowance).
 Accept the details of atleast 5 employees from the user and print details of the employee on the output screen. Then print the details of the employee with highest salary.
 */
-package Inheritance;
+
 
 import java.util.Scanner;
 
