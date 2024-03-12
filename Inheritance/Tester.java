@@ -71,6 +71,7 @@ class SalariedEmployee extends Employee {
         return empSalary;
     }
     //Not Permanent = Contract basis.
+    //Function to calculate Salary.
     public void setEmpSalary(double empSalary) {
         if (isPermanent) {
             this.empSalary = empSalary + 2000;
@@ -99,20 +100,22 @@ public class Tester {
         int n = in.nextInt();
         SalariedEmployee employees[] = new SalariedEmployee[n];
 
+        //Input details of Employees.
         for (int i = 0; i < n; i++) {
-            System.out.println("Enter name: ");
+            System.out.print("Enter name: ");
             name = in.next();
-            System.out.println("Enter id: ");
+            System.out.print("Enter id: ");
             id = in.next();
-            System.out.println("Enter age: ");
+            System.out.print("Enter age: ");
             age = in.nextInt();
-            System.out.println("Enter salary: ");
+            System.out.print("Enter salary: ");
             empSalary = in.nextDouble();
-            System.out.println("Is Permanent: (true/false)");
+            System.out.print("Is Permanent: (true/false)");
             boolean isPermanent = in.nextBoolean();
             employees[i] = new SalariedEmployee(name, id, age, empSalary, isPermanent);
         }
 
+        //Print output directly after taking input.
         for (int i = 0; i < n; i++) {
             System.out.println("Employee " + (i + 1) + ':');
             employees[i].printDetails();
@@ -125,6 +128,7 @@ public class Tester {
         in.close();
     }
 
+    //Method to calculate max Salary.
     private static int maxSalarayIndex(SalariedEmployee[] employees) {
         int maxIndex = 0;
         for (int i = 1; i < employees.length; i++) {

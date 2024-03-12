@@ -101,5 +101,3 @@ public class Clinic {
 
     }
 }
-
-//int days = (int) (last_date.getTime() - date.getTime());
