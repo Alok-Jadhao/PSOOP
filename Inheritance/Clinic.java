@@ -58,12 +58,16 @@ class Billing {
     }
 
     //Billing function to calculate due amount.
-    public void calculateDue() {
+    public void calculateDue(Date date,Date last_Date) {
         //days patient was admitted.
-        int days = (int) (last_date.getTime() - patient.date.getTime()) / (24);
+        long milliseconds = last_date.getTime() - date.getTime();
+        int days = (int) (milliseconds / (1000 * 60 * 60 * 24));
+        
         amountDue = days * 2000 + doctor.fees * days;
+        System.out.println("Days: " + days);
+        System.out.println("The bill is: " + amountDue);
+        
     }
-    
 }
 
 public class Clinic {
@@ -80,7 +84,10 @@ public class Clinic {
         Patient patient2 = new Patient("Jane", releaseDate, doctor2);
         Billing billing1 = new Billing(patient1, doctor1, releaseDate, 0);
         Billing billing2 = new Billing(patient2, doctor2, releaseDate, 0);
+        billing1.calculateDue(joinDate, releaseDate);
 
 
     }
 }
+
+//int days = (int) (last_date.getTime() - date.getTime());
