@@ -62,11 +62,21 @@ class Billing {
         //days patient was admitted.
         long milliseconds = last_date.getTime() - date.getTime();
         int days = (int) (milliseconds / (1000 * 60 * 60 * 24));
-        
+
         amountDue = days * 2000 + doctor.fees * days;
         System.out.println("Days: " + days);
         System.out.println("The bill is: " + amountDue);
-        
+
+    }
+
+    //Print all the details of the Billing.
+    @Override
+    public String toString() {
+        System.out.println("Patient: " + patient.name);
+        System.out.println("Doctor: " + doctor.name);
+        System.out.println("Date of Billing: " + last_date);
+        System.out.println("Amount Due: " + amountDue);
+        return "Thank you";
     }
 }
 
@@ -85,7 +95,9 @@ public class Clinic {
         Billing billing1 = new Billing(patient1, doctor1, releaseDate, 0);
         Billing billing2 = new Billing(patient2, doctor2, releaseDate, 0);
         billing1.calculateDue(joinDate, releaseDate);
-
+        billing1.toString();
+        Date today = new Date();
+        System.out.println("Today's date: " + today);
 
     }
 }
