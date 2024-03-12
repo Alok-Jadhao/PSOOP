@@ -56,16 +56,31 @@ class Billing {
         this.last_date = last_Date;
         this.amountDue = amountDue;
     }
+
+    //Billing function to calculate due amount.
+    public void calculateDue() {
+        //days patient was admitted.
+        int days = (int) (last_date.getTime() - patient.date.getTime()) / (24);
+        amountDue = days * 2000 + doctor.fees * days;
+    }
+    
 }
 
 public class Clinic {
     @SuppressWarnings("deprecation")
     public static void main(String[] args) {
+        //leaving date and person date are different.
         Date joinDate = new Date(2024,2,1);
-        //leaving date and person date are
-    
         Date releaseDate = new Date(2024, 3, 1);
 
-        
+        //Initialise doctor, patient and billing objects
+        Doctor doctor1 = new Doctor("Dr. Jack", joinDate, "Cardiologist", 500, 0);
+        Doctor doctor2 = new Doctor("Dr. Jill", joinDate, "Neurologist", 600, 0);
+        Patient patient1 = new Patient("John", releaseDate, doctor1);
+        Patient patient2 = new Patient("Jane", releaseDate, doctor2);
+        Billing billing1 = new Billing(patient1, doctor1, releaseDate, 0);
+        Billing billing2 = new Billing(patient2, doctor2, releaseDate, 0);
+
+
     }
 }
