@@ -17,7 +17,7 @@ Note:
 2. Get time period from the user
 3. Solve using method overriding
 */
-
+package Exp6;
 import java.util.Calendar;
 
 class Bank {
