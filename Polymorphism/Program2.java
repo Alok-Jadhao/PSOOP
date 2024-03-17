@@ -29,7 +29,7 @@ class Date {
     int sec;
 
     // Default constructor
-    public Date {
+    public Date() {
         this.year = 2000;
         this.month = 1;
         this.date = 1;

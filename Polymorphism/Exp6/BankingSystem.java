@@ -17,56 +17,104 @@ Note:
 2. Get time period from the user
 3. Solve using method overriding
 */
-package Exp6;
+// package Exp6;
 import java.util.Calendar;
 
 class Bank {
     int deposit;
+    double rate = 2;
 
-    public double get_rate_of_interest() {
+    public double get_rate_of_interest(int days) {
         return 2;
     }
 
     // Method to calculate the final amount (days as a parameter)
     public double get_final_amount(int deposit, int days) {
-        double rate = get_rate_of_interest();
-        double final_amount = deposit * Math.pow((1 + rate / 100), days);
-        return final_amount;
+        double rate = get_rate_of_interest(days);
+        return deposit * Math.pow((1 + rate / 100), (double) (days) /365);
     }
 }
 
 class SBI_Bank extends Bank {
-    //Update this method according to the given table.
-    public double get_rate_of_interest() {
-        return 7;
+
+    //Updated the rate according to the days input.
+    public double get_rate_of_interest(int days) {
+        if (days >= 7 && days <= 14) {
+            return 3.00;
+        } else if (days >= 15 && days <= 30) {
+            return 3.00;
+        } else if (days >= 31 && days <= 45) {
+            return 3.00;
+        } else if (days >= 46 && days <= 90) {
+            return 4.05;
+        } else if (days >= 91 && days <= 120) {
+            return 4.10;
+        } else if (days >= 121 && days <= 180) {
+            return 4.10;
+        } else {
+            return 2.0;
+        }
     }
+
 }
 
 class ICICI_Bank extends Bank {
-    //Update this method according to the given table.
-    public double get_rate_of_interest() {
-        return 8;
+
+    public double get_rate_of_interest(int days) {
+        if (days >= 7 && days <= 14) {
+            rate = 3.10;
+        } else if (days >= 15 && days <= 30) {
+            rate = 3.20;
+        } else if (days >= 31 && days <= 45) {
+            rate = 3.50;
+        } else if (days >= 46 && days <= 90) {
+            rate = 4.50;
+        } else if (days >= 91 && days <= 120) {
+            rate = 4.70;
+        } else if (days >= 121 && days <= 180) {
+            rate = 4.90;
+        }
+
+        return rate;
     }
 }
 
 class AXIS_bank extends Bank {
-    //Update this method according to the given table.
-    public double get_rate_of_interest() {
-        return 9;
+
+    public double get_rate_of_interest(int days) {
+        if (days >= 7 && days <= 14) {
+            return 3.15;
+        } else if (days >= 15 && days <= 30) {
+            return 3.15;
+        } else if (days >= 31 && days <= 45) {
+            return 3.45;
+        } else if (days >= 46 && days <= 90) {
+            return 4.05;
+        } else if (days >= 91 && days <= 120) {
+            return 4.70;
+        } else if (days >= 121 && days <= 180) {
+            return 5.00;
+        } else {
+            return 2.0;
+        }
     }
 }
 
+// TODO: Learn and Apply the Calendar Class to calculate number of days.
+
 public class BankingSystem {
     public static void main(String[] args) {
-        Bank bank = new Bank();
+        // Bank bank = new Bank();
+
+        // Different banks declaration.
         SBI_Bank sbi_bank = new SBI_Bank();
         ICICI_Bank icici_bank = new ICICI_Bank();
         AXIS_bank axis_bank = new AXIS_bank();
 
-        // Dummy Output.
-        // Not as required in the question.
-        System.out.println("SBI Bank: " + sbi_bank.get_final_amount(10000, 1));
-        System.out.println("ICICI Bank: " + icici_bank.get_final_amount(12500, 1));
-        System.out.println("AXIS Bank: " + axis_bank.get_final_amount(20000, 1));
+        // Output for different banks.
+        System.out.println("SBI Bank: " + sbi_bank.get_final_amount(10000, 10));
+        System.out.println("ICICI Bank: " + icici_bank.get_final_amount(10000, 10));
+        System.out.println("AXIS Bank: " + axis_bank.get_final_amount(10000, 10));
     }
 }
+

@@ -1,3 +1,5 @@
+package Arrays;
+
 import java.util.Scanner;
 
 // Class to hold information about movies
