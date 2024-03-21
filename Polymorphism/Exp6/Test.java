@@ -13,7 +13,7 @@ In your main method, create an array of type Rental filled with sample data of a
 Then, create a method named lateFeesOwed that iterates through the array and returns the total amount of late fees that are outstanding.
  */
 
- class Movie {
+class Movie {
     String rating;
     long id;
     String title;
@@ -59,49 +59,66 @@ class Comedy extends Movie {
 }
 
 class Drama extends Movie {
-
+    // method same as Parent class.
 }
 
 class Rental {
+    Movie movie;
     int custID;
     int days;
+    static double total;
 
-    public double calculateFees(int days) {
-        return days * 2;
+    public Rental(Movie movie, int custID, int days) {
+        this.movie = movie;
+        this.custID = custID;
+        this.days = days;
+        total += movie.calculateFees(days);
     }
+
+    // calling the respective calculate function.
+    public double calculateFees(int days) {
+        return movie.calculateFees(days);
+    }
+    
 
 }
 
 public class Test {
     public static void main(String[] args) {
+        // Instantiated different movies using accessor and mutator.
         Movie movie1 = new Movie();
         movie1.setRating("Rated G");
         movie1.setId(1);
         movie1.setTitle("Movie 1");
 
-        Movie movie2 = new Movie();
+        Movie movie2 = new Drama();
         movie2.setRating("Rated PG-13");
         movie2.setId(2);
-        movie2.setTitle("Movie 2");
+        movie2.setTitle("Drama");
 
-        Movie movie3 = new Movie();
+        Movie movie3 = new Action();
         movie3.setRating("Rated R");
         movie3.setId(3);
-        movie3.setTitle("Movie 3");
+        movie3.setTitle("Action");
 
-        Movie movie4 = new Movie();
+        Movie movie4 = new Comedy();
         movie4.setRating("Rated G");
         movie4.setId(4);
-        movie4.setTitle("Movie 4");
+        movie4.setTitle("Comedy");
 
-        Movie movie5 = new Movie();
-        movie5.setRating("Rated PG-13");
-        movie5.setId(5);
-        movie5.setTitle("Movie 5");
+        // Inserted the days to simplify the program.
+        // Can easily be done using Calendar Class.
+        Rental[] rentals = {
+            new Rental(movie2, 123, 10),
+            new Rental(movie3, 456, 10),
+            new Rental(movie4, 789, 10)
+        };
 
-        Movie movie6 = new Movie();
-        movie6.setRating("Rated R");
-        movie6.setId(6);
-        movie6.setTitle("Movie 6");
+        System.out.println("Drama fees: " + rentals[0].calculateFees(10));
+        System.out.println("Action fees: " + rentals[1].calculateFees(10));
+        System.out.println("Comedy fees: " + rentals[2].calculateFees(10));
+        System.out.println("The total rent is: " + Rental.total);
+
+
     }
 }

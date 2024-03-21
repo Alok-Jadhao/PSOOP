@@ -104,8 +104,6 @@ class AXIS_bank extends Bank {
 
 public class BankingSystem {
     public static void main(String[] args) {
-        // Bank bank = new Bank();
-
         // Different banks declaration.
         SBI_Bank sbi_bank = new SBI_Bank();
         ICICI_Bank icici_bank = new ICICI_Bank();

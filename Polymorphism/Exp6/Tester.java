@@ -1,22 +1,3 @@
-// package Polymorphism.Exp6;
-/*
-Define class Production that has attributes String title, String director, String writer. Production class has 3 argument constructor that sets the values. It also has getter and setter methods and Overridden toString() of object class  to display details of class.
-
-class Play is a sub class of Production with getter and setter methods and has an attribute int performances that is incremented every time a play happens.Add Overridden toString() of object class  to display details of class
-
-class Musical is a Play with songs. Musical object has all attributes of Play as well as String composer and String lyricist along with getter and setter methods. Override toString display all attributes of Musical object
-
-In main create 3 objects of Play and 2 objects of Musical. Every time an object of Play or Musical is created, performances get incremented. Also add the number of seats booked for each play or musical.
-
-Find the total box office collection, provided cost of 1 seat for Play is Rs 500(can be variable) and cost of 1 seat for Musical is Rs 800(can be variable)
-
-Display total No. of performances as 5 and display the box office collection.
-
-Create class Tester with main method.
-*/
-
-
-
 class Production {
     String title;
     String director;
@@ -64,9 +45,11 @@ class Production {
 
 class Play extends Production {
     static int performances;
+    int seatsBooked;
 
-    public Play(String title, String director, String writer) {
+    public Play(String title, String director, String writer, int seatsBooked) {
         super(title, director, writer);
+        this.seatsBooked = seatsBooked;
         performances++;
     }
 
@@ -74,10 +57,15 @@ class Play extends Production {
         return performances;
     }
 
+    public int getSeatsBooked() {
+        return seatsBooked;
+    }
+
     @Override
     public String toString() {
         return "Play{" +
                 "performances=" + performances +
+                ", seatsBooked=" + seatsBooked +
                 '}';
     }
 }
@@ -86,8 +74,8 @@ class Musical extends Play {
     String composer;
     String lyricist;
 
-    public Musical(String title, String director, String writer, String composer, String lyricist) {
-        super(title, director, writer);
+    public Musical(String title, String director, String writer, String composer, String lyricist, int seatsBooked) {
+        super(title, director, writer, seatsBooked);
         this.composer = composer;
         this.lyricist = lyricist;
     }
@@ -118,18 +106,26 @@ class Musical extends Play {
 }
 
 public class Tester {
+    static final int PLAY_SEAT_COST = 500;
+    static final int MUSICAL_SEAT_COST = 800;
+
     public static void main(String[] args) {
-        // 3 different objects of Play
-        Play p1 = new Play("The Lion King", "Disney", "Disney");
-        Play p2 = new Play("Chotta Bheem", "Disney", "Disney");
-        Play p3 = new Play("Tom and Jerry", "Disney", "Disney");
+        // 3 different objects of Play with some seats booked
+        Play p1 = new Play("The Lion King", "Disney", "Disney", 100);
+        Play p2 = new Play("Chotta Bheem", "Disney", "Disney", 150);
+        Play p3 = new Play("Tom and Jerry", "Disney", "Disney", 200);
 
-        // 2 objects of Musical
-        Musical m1 = new Musical("Mast Malang Jhoom", "T Series", "T Series", "T Series", "T Series");
-        Musical m2 = new Musical("Ghungroo", "T Series", "T Series", "T Series", "T Series");
+        // 2 objects of Musical with some seats booked
+        Musical m1 = new Musical("Mast Malang Jhoom", "T Series", "T Series", "T Series", "T Series", 120);
+        Musical m2 = new Musical("Ghungroo", "T Series", "T Series", "T Series", "T Series", 180);
 
-        // printing the number of performances
+        // Calculate total box office collection for Play and Musical
+        int totalPlayCollection = p1.getSeatsBooked() * PLAY_SEAT_COST + p2.getSeatsBooked() * PLAY_SEAT_COST + p3.getSeatsBooked() * PLAY_SEAT_COST;
+        int totalMusicalCollection = m1.getSeatsBooked() * MUSICAL_SEAT_COST + m2.getSeatsBooked() * MUSICAL_SEAT_COST;
+        int totalBoxOfficeCollection = totalPlayCollection + totalMusicalCollection;
+
+        // printing the number of performances and total box office collection
         System.out.println("The number of performances: " + Play.performances);
-
+        System.out.println("Total Box Office Collection: Rs." + totalBoxOfficeCollection);
     }
 }
