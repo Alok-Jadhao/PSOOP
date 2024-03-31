@@ -1,4 +1,4 @@
-// package Abstraction.Interfaces;
+package Abstraction.Interfaces;
 /*
 Consider two interfaces, Volume and SurfaceArea with methods getVolume() and
 getSurfaceArea() respectively. Class ‘Cylinder’ implements both Volume and
