@@ -101,10 +101,9 @@ public class Test {
         mcq[2] = new MCQ("Who is the President of India?", "Droupadi Murmu");
 
         // Three TrueFalse Array.
-        TrueFalse[] tf = new TrueFalse[3];
+        TrueFalse[] tf = new TrueFalse[2];
         tf[0] = new TrueFalse("India is a democratic country.", "true");
         tf[1] = new TrueFalse("India got independence in 1945.", "false");
-        tf[2] = new TrueFalse("One party politics is good for democracy.", "false");
 
         System.out.println("Let the Quiz begin!");
         Scanner in = new Scanner(System.in);
@@ -144,7 +143,5 @@ public class Test {
 5 question
 3 mcq
 2 true/false
-
-abstract methods:
 
 */

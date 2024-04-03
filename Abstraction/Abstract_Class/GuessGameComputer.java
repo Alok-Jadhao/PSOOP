@@ -17,7 +17,7 @@ Else print that he was not able to guess and then print the actual number.
 Define the Player class with a abstract function named getGuess().
 */
 
-
+// TODO: Now I will take the number and computer will play game of guessing.
 import java.util.Scanner;
 
 abstract class Player{
@@ -51,8 +51,9 @@ class HumanPlayer extends Player{
 
         if (chances == current)
             System.out.println("No Attempts Remaining // Game Over //");
-        }   
-}
+        }
+        
+    }
 
 
 public class GuessGame{
@@ -60,4 +61,7 @@ public class GuessGame{
         HumanPlayer u1 = new HumanPlayer();
         u1.getGuess();
     }
+
+
 }
+

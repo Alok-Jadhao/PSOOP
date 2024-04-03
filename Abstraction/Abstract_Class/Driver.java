@@ -1,10 +1,6 @@
 abstract class Car {
     abstract void drive();
 
-    // static void fly() {
-    //     System.out.println("I'm Flying.");
-    // }
-
     abstract void fly();
 
     void playMusic() {
@@ -19,10 +15,6 @@ abstract class WagonR extends Car {
         System.out.println("::driving::");
     }
 
-    // @Override
-    // void fly() {
-    //     System.out.println("::I'm flying::");
-    // }
 }
 
 // Concrete class.
@@ -34,12 +26,9 @@ class AeroHT extends WagonR {
 
 public class Driver {
     public static void main(String[] args) {
-        // Car wagonR = new WagonR();
-        // wagonR.drive();
-        // wagonR.playMusic();
-        // Car.fly();
-
         Car aeroHT = new AeroHT();
+        aeroHT.drive();
+        aeroHT.playMusic();
         aeroHT.fly();
     }
 }
