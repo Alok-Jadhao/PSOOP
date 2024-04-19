@@ -49,9 +49,9 @@ public class Sorting {
         System.out.println(Arrays.toString(arr));
 
 
-        /*selectionSort.sort(arr);
-        System.out.println("Selection Sort: ");
-        System.out.println(Arrays.toString(arr));*/
+        // selectionSort.sort(arr);
+        // System.out.println("Selection Sort: ");
+        // System.out.println(Arrays.toString(arr));
 
         BubbleSort bubbleSort = new BubbleSort();
         bubbleSort.sort(arr);

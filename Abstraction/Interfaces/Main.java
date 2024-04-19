@@ -1,33 +1,48 @@
-package Abstraction.Interfaces;
-
 /*
-Write a java program to create an interface sortable with a method sort() that sorts an array of integers in ascending order.
-Create two classes Bubble sort and Selection sort that implements the sortable interface and provide their own implementations
-of the sort() method
+ * Write a class that implements the CharSequence interface. Your implementation should return the string backwards. Select one of the sentences to use as the data. Write a small main method to test your class.
  */
 
-interface Sortable {
-    void sort(int[] arr);
-}
+import java.util.Scanner;
 
-class BubbleSort implements Sortable {
+class BackwardsCharSequence implements CharSequence {
+    private String data;
 
-    @Override
-    public void sort(int[] arr) {
-
+    public BackwardsCharSequence(String data) {
+        this.data = data;
     }
-}
-
-class SelectionSort implements Sortable {
 
     @Override
-    public void sort(int[] arr) {
+    public int length() {
+        return data.length();
+    }
 
+    @Override
+    public char charAt(int index) {
+        return data.charAt(data.length() - 1 - index);
+    }
+
+    @Override
+    public CharSequence subSequence(int start, int end) {
+        StringBuilder reversedSubsequence = new
+        StringBuilder(data.substring(start, end)).reverse();
+        return reversedSubsequence.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder reversedString = new
+        StringBuilder(data).reverse();
+        return reversedString.toString();
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a sentence:");
+        String inputSentence = scanner.nextLine();
+        CharSequence reversedSequence = new BackwardsCharSequence(inputSentence);
+        System.out.println("Reversed sentence using custom CharSequence: " + reversedSequence);
+        scanner.close();
     }
 }

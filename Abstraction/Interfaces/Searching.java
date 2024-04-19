@@ -32,12 +32,18 @@ public class Searching {
     public static void main(String[] args) {
         System.out.println("Document class - object.");
         String s1 = "Vandit and Alok are good friends.";
-        System.out.println("String to be search");
+        System.out.println("Document : " + s1);
         Document document = new Document(s1);
-        System.out.println(document.search("are good"));
+        String search = "are good";
+        System.out.println("String to search: " + search);
+        System.out.println("The required string present: " + document.search(search) + "\n");
 
         System.out.println("WebPage class - object.");
-        WebPage webPage = new WebPage("This is a sample webpage for Searching programming. No is 23");
-        System.out.println(webPage.search("25"));
+        String s2 = "This is a sample webpage for Searching programming. No is 23";
+        System.out.println("WebPage: " + s2);
+        String search2 = "25";
+        System.out.println("Number to search: " + search2);
+        WebPage webPage = new WebPage(s2);
+        System.out.println("The required string present: " + webPage.search(search2));
     }
 }
