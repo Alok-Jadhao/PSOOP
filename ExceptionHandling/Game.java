@@ -64,26 +64,31 @@ public class Game {
         Cricketer[] players = new Cricketer[11];
         // user input of cricketers.
         Scanner sc = new Scanner(System.in);
-        try {
-            for (int i = 0; i < 12; i++) {
-                if(i == 12) {
-                    throw new ArrayIndexOutOfBoundsException();
-                }
-                System.out.println("Enter player name: ");
-                String name = sc.next();
-                System.out.println("Enter runs hit: ");
-                int runs = sc.nextInt();
-                System.out.println("Enter innings count: ");
-                int innings = sc.nextInt();
-                System.out.println("Enter not out count: ");
-                int not_out = sc.nextInt();
-
-                // object of cricketer
-                players[i] = new Cricketer(name, runs, innings, not_out);
+        
+        for (int i = 0; i < 3; i++) {
+            if(i == 12) {
+                throw new ArrayIndexOutOfBoundsException();
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Enter player name: ");
+            String name = sc.next();
+            System.out.println("Enter runs hit: ");
+            int runs = sc.nextInt();
+            System.out.println("Enter innings count: ");
+            int innings = sc.nextInt();
+            System.out.println("Enter not out count: ");
+            int not_out = sc.nextInt();
+
+            // object of cricketer
+            players[i] = new Cricketer(name, runs, innings, not_out);
         }
+
+        sc.close();
+
+        // explicit ArrayIndexOutOfBoundsException
+        try {
+            
+        }
+     
 
         // finding batting average for all cricketers
         for(int i = 0; i < players.length; i++) {
