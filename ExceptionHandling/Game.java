@@ -36,7 +36,7 @@ class Cricketer {
     }
 
     public double get_avg() {
-        batting_avg = (double) runs_hit / innings_count;
+        batting_avg = (double) runs_hit / (innings_count - not_out_count);
         return batting_avg;
     }
 }
@@ -60,39 +60,74 @@ class ArithmeticException extends Exception {
 }
 
 public class Game {
-    public static void main(String[] args) throws ArrayIndexOutOfBoundsException{
-        Cricketer[] players = new Cricketer[11];
+    public static void main(String[] args) throws TotalAvgException{
+        Cricketer[] players = new Cricketer[2];
         // user input of cricketers.
         Scanner sc = new Scanner(System.in);
         
-        for (int i = 0; i < 3; i++) {
-            if(i == 12) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-            System.out.println("Enter player name: ");
+        for (int i = 0; i < 2; i++) {
+            System.out.print("Enter player name: ");
             String name = sc.next();
-            System.out.println("Enter runs hit: ");
+            System.out.print("Enter runs hit: ");
             int runs = sc.nextInt();
-            System.out.println("Enter innings count: ");
+            System.out.print("Enter innings count: ");
             int innings = sc.nextInt();
-            System.out.println("Enter not out count: ");
+            System.out.print("Enter not out count: ");
             int not_out = sc.nextInt();
 
             // object of cricketer
             players[i] = new Cricketer(name, runs, innings, not_out);
         }
 
+
+
+        print_sorted_avg(players);
+
+        try {
+            System.out.println("The team average is : " + team_avg(players));
+        } catch (TotalAvgException e) {
+            System.out.println(e);
+        }
+
         sc.close();
 
-        // explicit ArrayIndexOutOfBoundsException
-        try {
-            
-        }
-     
+    }
 
-        // finding batting average for all cricketers
-        for(int i = 0; i < players.length; i++) {
-            System.out.println(players[i].player_name + " average runs: " + players[i].get_avg());
+    public static void print_sorted_avg(Cricketer[] Players) {
+        // sorting the cricketers based on their batting average
+        for (int i = 0; i < Players.length; i++) {
+            for (int j = i + 1; j < Players.length; j++) {
+                if (Players[i].batting_avg > Players[j].batting_avg) {
+                    Cricketer temp = Players[i];
+                    Players[i] = Players[j];
+                    Players[j] = temp;
+                }
+            }
         }
+
+        // printing the sorted cricketers
+        for (int i = 0; i < Players.length; i++) {
+            System.out.println(Players[i].player_name + " average runs: " + Players[i].get_avg());
+        }
+    }
+
+    public static double team_avg(Cricketer[] Players) throws TotalAvgException{
+        double team_avg = 0;
+        for (int i = 0; i < Players.length; i++) {
+            team_avg += Players[i].get_avg();
+        }
+        team_avg /= Players.length;
+
+        if (team_avg < 20) {
+            throw new TotalAvgException();
+        }
+
+        return team_avg;
+    }
+}
+
+class TotalAvgException extends Exception {
+    public TotalAvgException() {
+        super("Average cannot be less than 20 runs.");
     }
 }
