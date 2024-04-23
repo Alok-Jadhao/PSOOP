@@ -25,7 +25,7 @@ class Department extends Thread {
         while (true) {
             try {
                 System.out.println("Computer Engineering Department");
-                Thread.sleep(1500);
+                Thread.sleep(300);
             } catch (Exception e) {
                 e.getMessage();
             }
