@@ -1,4 +1,4 @@
-package ExceptionHandling;
+// package ExceptionHandling;
 
 import java.util.Scanner;
 
@@ -12,5 +12,6 @@ public class Argument {
 
 		int c = Integer.parseInt(args[0]);
 		System.out.print(a/b);
+		System.out.println(c);
 	}
 }
